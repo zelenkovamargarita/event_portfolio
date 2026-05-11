@@ -6,4 +6,216 @@
   <title>Маргарита Зеленкова — Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body><h1>Portfolio ready</h1></body></html>
+<body class="bg-black text-gray-200 font-sans">
+
+  <!-- Hero -->
+  <section class="min-h-screen flex flex-col justify-center items-center text-center p-6">
+    <h1 class="text-5xl font-bold mb-4 text-white">Маргарита Зеленкова</h1>
+    <p class="text-xl mb-6 text-gray-400">Event / Brand Manager</p>
+  </section>
+
+  <!-- About -->
+  <section class="p-10 max-w-3xl mx-auto text-center">
+    <p class="mb-4">
+      Я event / brand manager с 5+ годами опыта в мероприятиях, маркетинге и работе с брендами.
+    </p>
+    <p class="mb-4">
+      Работаю с проектами под ключ — от идеи и концепции до реализации и анализа результата.
+    </p>
+    <p>
+      За это время организовала 40+ мероприятий разных форматов: от камерных событий до ивентов на 1000+ участников, а также запускала коллаборации и бренд-активации.
+    </p>
+  </section>
+
+  <!-- Portfolio -->
+  <section class="p-10">
+    <h2 class="text-3xl font-semibold mb-8 text-center text-white">Кейсы</h2>
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-6">
+
+      <!-- Case 1 -->
+      <div onclick="openModal()" class="cursor-pointer bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
+        <img src="images/k30-1.jpg" class="h-40 w-full object-cover opacity-80 hover:opacity-100 transition">
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-white">Синхронизация в К-30</h3>
+          <p class="text-gray-400">Фитмост / комьюнити-ивенты</p>
+        </div>
+      </div>
+
+      <!-- Case 2 -->
+      <div onclick="openModal2()" class="cursor-pointer bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
+        <img src="images/k30-2.jpg" class="h-40 w-full object-cover opacity-80 hover:opacity-100 transition">
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-white">Диджей сет на СКА Арене</h3>
+          <p class="text-gray-400">Фитмост / зимний ивент</p>
+        </div>
+      </div>
+
+      <!-- Case 3 -->
+      <div onclick="openModal3()" class="cursor-pointer bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
+        <img src="images/k30-3.jpg" class="h-40 w-full object-cover opacity-80 hover:opacity-100 transition">
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-white">Фитмост × Твинби</h3>
+          <p class="text-gray-400">Фитнес-дейтинг / коллаборация</p>
+        </div>
+      </div>
+
+      <!-- Case 4 -->
+      <div onclick="openModal4()" class="cursor-pointer bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
+        <div class="h-40 w-full bg-gradient-to-br from-neutral-800 to-neutral-700"></div>
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-white">Фитмост × Кона кафе</h3>
+          <p class="text-gray-400">Коллаборация / инфлюенсер-ивент</p>
+        </div>
+      </div>
+
+          <!-- Case 5 -->
+      <div onclick="openModal5()" class="cursor-pointer bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
+        <div class="h-40 w-full bg-gradient-to-br from-neutral-800 to-neutral-700"></div>
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-white">Премиум-мероприятия</h3>
+          <p class="text-gray-400">Закрытые ивенты / комьюнити</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Modal 1 -->
+  <div id="modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4">
+    <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
+      <h2 class="text-2xl font-bold mb-4 text-white">Синхронизация в К-30</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+        <img src="images/k30-1.jpg" class="rounded-xl object-cover">
+        <img src="images/k30-2.jpg" class="rounded-xl object-cover">
+        <img src="images/k30-3.jpg" class="rounded-xl object-cover">
+      </div>
+      <p class="mb-3 text-gray-300"><strong>🎯 Задача:</strong><br>Организовать крупные мероприятия от Фитмост для привлечения новых клиентов, повышения лояльности и узнаваемости бренда.</p>
+      <p class="mb-3 text-gray-300"><strong>💡 Концепция:</strong><br>Тренировки под диджей-сеты, современные локации, партнеры с напитками и снеками, подарки и усиленное комьюнити.</p>
+      <p class="mb-2 text-gray-300"><strong>⚙️ Что я делала:</strong></p>
+      <ul class="list-disc pl-5 mb-4 text-gray-400 space-y-1">
+        <li>Полностью вела проект от идеи до реализации</li>
+        <li>Подбирала площадку и подрядчиков</li>
+        <li>Формировала бюджет и контролировала расходы</li>
+        <li>Разрабатывала тайминг и структуру мероприятия</li>
+        <li>Привлекала партнеров</li>
+        <li>Координировала команду и работу на площадке</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div id="modal2" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4">
+    <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
+      <button onclick="closeModal2()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
+      <h2 class="text-2xl font-bold mb-4 text-white">Диджей сет на СКА Арене</h2>
+      <p class="mb-3 text-gray-300"><strong>🎯 Задача:</strong><br>Организовать мероприятие от Фитмост приуроченное к зимнему сезону и Новому году.</p>
+      <p class="mb-3 text-gray-300"><strong>💡 Концепция:</strong><br>Рождественская ярмарка + спорт: диджей-сет на катке, мастер-класс по фигурному катанию, яблоки в карамели и глинтвейн. Виральный и нестандартный формат.</p>
+      <p class="mb-2 text-gray-300"><strong>⚙️ Что я делала:</strong></p>
+      <ul class="list-disc pl-5 mb-4 text-gray-400 space-y-1">
+        <li>Полностью вела проект от идеи до реализации</li>
+        <li>Подбирала площадку и подрядчиков</li>
+        <li>Формировала бюджет и контролировала расходы</li>
+        <li>Разрабатывала тайминг и структуру мероприятия</li>
+        <li>Привлекала партнеров</li>
+        <li>Координировала команду и работу на площадке</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div id="modal3" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4">
+    <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
+      <button onclick="closeModal3()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
+      <h2 class="text-2xl font-bold mb-4 text-white">Фитмост × Твинби</h2>
+      <p class="mb-3 text-gray-300">Фитнес-дейтинг мероприятие в коллаборации с Твинби</p>
+      <p class="mb-2 text-gray-300"><strong>⚙️ Что было реализовано:</strong></p>
+      <ul class="list-disc pl-5 mb-4 text-gray-400 space-y-1">
+        <li>Разработка анкет для знакомств</li>
+        <li>Брендированные карточки с вопросами</li>
+        <li>Зоны с мастер-классами для пар</li>
+        <li>Парные тренировки (бокс и йога)</li>
+        <li>Бар с напитками</li>
+        <li>Фотозоны</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal 4 -->
+  <div id="modal4" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4">
+    <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
+      <button onclick="closeModal4()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
+      <h2 class="text-2xl font-bold mb-4 text-white">Фитмост × Кона кафе</h2>
+      <p class="text-gray-400 mb-4">Спешл-меню и ивент для инфлюенсеров</p>
+
+      <p class="mb-3 text-gray-300">Совместно с кафе разработали спешл-меню в брендовых оттенках в рамках коллаборации.</p>
+
+      <p class="mb-2 text-gray-300"><strong>⚙️ Чем я занималась:</strong></p>
+      <ul class="list-disc pl-5 mb-4 text-gray-400 space-y-1">
+        <li>Поиск идей и референсов</li>
+        <li>ТЗ на дизайн меню и карточек с оффером</li>
+        <li>Полная организация ивента для инфлюенсеров (пилатес + бранч)</li>
+        <li>Разработка пресс-релиза</li>
+        <li>Согласование постов и анонсов в соцсетях</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal 5 -->
+  <div id="modal5" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4">
+    <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
+      <button onclick="closeModal5()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
+      <h2 class="text-2xl font-bold mb-4 text-white">Мероприятия для премиум-клиентов</h2>
+
+      <p class="mb-3 text-gray-300"><strong>🎯 Задача:</strong><br>
+      Каждый месяц проводить закрытые мероприятия для ультра-пользователей приложения.</p>
+
+      <p class="mb-2 text-gray-300"><strong>⚙️ Чем я занималась:</strong></p>
+      <ul class="list-disc pl-5 mb-4 text-gray-400 space-y-1">
+        <li>Организовала 7 мероприятий в разных локациях</li>
+        <li>Придумывала необычные форматы (йога в ночных масках, пилатес и бранч, растяжка при свечах)</li>
+        <li>Вела проекты от идеи до реализации</li>
+        <li>Искала партнеров для подарков</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <section class="p-10 border-t border-white/10">
+    <h2 class="text-3xl font-semibold mb-8 text-center text-white">Ключевые результаты</h2>
+    <div class="max-w-3xl mx-auto">
+      <ul class="list-disc pl-5 text-gray-300 space-y-2">
+        <li>Более 700+ участников на самом крупном мероприятии</li>
+        <li>Положительные отзывы от участников и партнеров</li>
+        <li>Большое количество отметок и упоминаний в соцсетях, рост узнаваемости бренда</li>
+        <li>Сформирована база проверенных подрядчиков, площадок и партнеров</li>
+        <li>Увеличен процент бартерного сотрудничества</li>
+        <li>Сформировано комьюнити премиум-пользователей</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="p-10 text-center border-t border-white/10">
+    <h2 class="text-2xl font-semibold mb-4 text-white">Контакты</h2>
+    <p class="text-gray-400">Telegram: @vt_margarita</p>
+    <p class="text-gray-400">Телефон: +7 952 931-61-39</p>
+  </section>
+
+  <!-- Script -->
+  <script>
+    function openModal() {document.getElementById('modal').classList.replace('hidden','flex');}
+    function closeModal() {document.getElementById('modal').classList.replace('flex','hidden');}
+    function openModal2() {document.getElementById('modal2').classList.replace('hidden','flex');}
+    function closeModal2() {document.getElementById('modal2').classList.replace('flex','hidden');}
+    function openModal3() {document.getElementById('modal3').classList.replace('hidden','flex');}
+    function closeModal3() {document.getElementById('modal3').classList.replace('flex','hidden');}
+    function openModal4() {document.getElementById('modal4').classList.replace('hidden','flex');}
+    function closeModal4() {document.getElementById('modal4').classList.replace('flex','hidden');}
+    function openModal5() {document.getElementById('modal5').classList.replace('hidden','flex');}
+    function closeModal5() {document.getElementById('modal5').classList.replace('flex','hidden');}
+  </script>
+
+</body>
+</html>
