@@ -1,288 +1,736 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Маргарита Зеленкова — Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Маргарита Зеленкова — Event & Brand Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0d0c0a;
+    --surface: #141310;
+    --card: #1a1814;
+    /* Заменили золотой на нежно-розовый */
+    --gold: #e8b4b8; 
+    --gold-light: #f3cbd0;
+    --cream: #f5efe4;
+    --muted: #7a7060;
+    --border: rgba(232, 180, 184, 0.15);
+    --radius: 2px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Onest', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(232,180,184,0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.18s ease;
+  }
+  .cursor-ring.hover {
+    width: 48px;
+    height: 48px;
+    border-color: var(--gold);
+    background: rgba(232,180,184,0.05);
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    mix-blend-mode: normal;
+    background: linear-gradient(to bottom, rgba(13,12,10,0.9) 0%, transparent 100%);
+    backdrop-filter: blur(0px);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 120px 48px 80px 48px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+  
+  /* Контейнер для фото и имени */
+  .hero-name-container {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  
+  /* Стили для круглого фото */
+  .hero-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 5vw, 76px);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-desc {
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 360px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-visual {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 30% 50%, rgba(232,180,184,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(232,180,184,0.05) 0%, transparent 50%);
+  }
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .hero-lines svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    z-index: 2;
+  }
+  .scroll-hint::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--muted), transparent);
+    display: block;
+  }
+
+  /* SECTION */
+  section {
+    position: relative;
+    z-index: 2;
+  }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 60px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 120px;
+  }
+
+  /* CASES GRID */
+  #cases {
+    padding: 120px 48px;
+  }
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .case-card {
+    background: var(--card);
+    padding: 40px;
+    cursor: none;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s;
+    border: 1px solid transparent;
+    transition: border-color 0.4s, transform 0.4s;
+  }
+  .case-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .case-card:hover::before { transform: scaleX(1); }
+  .case-card:hover { border-color: var(--border); }
+  .case-card:hover .case-arrow { opacity: 1; transform: translate(0, 0); }
+  .case-card:hover .case-bg { opacity: 1; }
+
+  .case-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+  }
+
+  .case-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 32px;
+    letter-spacing: 0.1em;
+  }
+  .case-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--cream);
+    transition: color 0.3s;
+  }
+  .case-card:hover .case-title { color: var(--gold-light); }
+  .case-excerpt {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .case-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: 0;
+  }
+  .case-arrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0;
+    transform: translate(-8px, 0);
+    transition: all 0.3s ease;
+  }
+  .case-arrow svg { width: 16px; }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(13,12,10,0.96);
+    z-index: 500;
+    display: flex;
+    align-items: stretch;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(8px);
+  }
+  .modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .modal {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    transform: translateY(40px);
+    transition: transform 0.4s ease;
+  }
+  .modal-overlay.active .modal { transform: translateY(0); }
+
+  .modal-content {
+    padding: 80px 64px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    position: relative;
+  }
+  .modal-content::-webkit-scrollbar { display: none; }
+
+  .modal-close {
+    position: absolute;
+    top: 32px; right: 32px;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: none;
+    transition: all 0.3s;
+    font-size: 18px;
+    z-index: 10;
+  }
+  .modal-close:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(232,180,184,0.05);
+  }
+
+  .modal-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    margin-bottom: 24px;
+  }
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 40px;
+  }
+
+  .modal-section-title {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    margin-top: 40px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-text {
+    color: #a09880;
+    font-size: 14px;
+    line-height: 1.85;
+  }
+  .modal-list {
+    list-style: none;
+    margin-top: 12px;
+  }
+  .modal-list li {
+    color: #a09880;
+    font-size: 14px;
+    line-height: 1.8;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+  .modal-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 12px;
+  }
+
+  .modal-visual {
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .modal-visual-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .modal-photo-placeholder .placeholder-art {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .photo-upload-hint {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    background: linear-gradient(to top, rgba(13,12,10,0.95) 0%, transparent 100%);
+  }
+  .photo-upload-text {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    border: 1px dashed rgba(232,180,184,0.2);
+    padding: 16px 24px;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .modal-case-number-bg {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 240px;
+    font-weight: 300;
+    color: rgba(232,180,184,0.04);
+    line-height: 1;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* CONTACT */
+  #contact {
+    padding: 120px 48px;
+    border-top: 1px solid var(--border);
+  }
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+  }
+  .contact-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .contact-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .contact-sub {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 360px;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    padding: 24px 32px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-link::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--gold);
+    transform: scaleY(0);
+    transition: transform 0.3s;
+  }
+  .contact-link:hover::before { transform: scaleY(1); }
+  .contact-link:hover { background: rgba(232,180,184,0.04); }
+  .contact-link-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .contact-link-value {
+    font-size: 16px;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .contact-link-icon {
+    margin-left: auto;
+    color: var(--gold);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .contact-link:hover .contact-link-icon { opacity: 1; }
+
+  footer {
+    padding: 32px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  footer p {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 100px 24px 60px; }
+    .hero-name-container { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .hero-avatar { width: 90px; height: 90px; }
+    #cases { padding: 80px 24px; }
+    .cases-grid { grid-template-columns: 1fr; gap: 2px; }
+    .modal { grid-template-columns: 1fr; }
+    .modal-visual { display: none; }
+    .modal-content { padding: 48px 24px; }
+    #contact { padding: 80px 24px; }
+    .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+  }
+</style>
 </head>
-<body class="bg-gradient-to-br from-[#16181d] via-[#1b1d24] to-[#22252d] text-gray-200 font-sans min-h-screen">
+<body>
 
-  <!-- Hero -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center p-6 relative overflow-hidden">
-<div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(120,119,198,0.08),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(96,165,250,0.06),transparent_35%),radial-gradient(circle_at_50%_80%,rgba(168,85,247,0.05),transparent_35%)] blur-3xl"></div>
-<div class="relative z-10">
-    <h1 class="text-5xl font-bold mb-4 text-white">Маргарита Зеленкова</h1>
-    <p class="text-xl mb-6 text-gray-300">Event / Brand Manager</p>
-  </div></section>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- About -->
-  <section class="p-10 max-w-3xl mx-auto text-center">
-    <p class="mb-4">
-      Я event / brand manager с 5+ годами опыта в мероприятиях, маркетинге и работе с брендами.
+<nav>
+  <a href="#" class="nav-logo">М. Зеленкова</a>
+  <ul class="nav-links">
+    <li><a href="#cases">Кейсы</a></li>
+    <li><a href="#contact">Контакт</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Event & Brand Manager</div>
+    
+    <div class="hero-name-container">
+      <img src="your-photo.jpg" alt="Маргарита Зеленкова" class="hero-avatar">
+      <h1 class="hero-name">
+        Маргарита<br><em>Зеленкова</em>
+      </h1>
+    </div>
+
+    <p class="hero-desc">
+      Работаю с проектами под ключ — от идеи и концепции<br>
+      до реализации и анализа результата.
     </p>
-    <p class="mb-4">
-      Работаю с проектами под ключ — от идеи и концепции до реализации и анализа результата.
-    </p>
-    <p>
-      За это время организовала 40+ мероприятий разных форматов: от камерных событий до ивентов на 1000+ участников, а также запускала коллаборации и бренд-активации.
-    </p>
-  </section>
-
-  <!-- Portfolio -->
-  <section class="p-10">
-    <h2 class="text-3xl font-semibold mb-8 text-center text-white">Кейсы</h2>
-
-    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-6">
-
-      <!-- Case 1 -->
-      <div onclick="openModal()" class="cursor-pointer bg-white/8 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
-        <div class="h-40 w-full bg-gradient-to-br from-slate-700/20 via-slate-800/10 to-slate-900/30"></div>
-        <div class="p-4">
-          <h3 class="text-xl font-bold text-white">Фитнес-рейв</h3>
-          <p class="text-gray-400">Фитмост / комьюнити-ивенты</p>
-        </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">40+</div>
+        <div class="stat-label">мероприятий</div>
       </div>
-
-      <!-- Case 2 -->
-      <div onclick="openModal2()" class="cursor-pointer bg-white/8 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
-        <div class="h-40 w-full bg-gradient-to-br from-slate-700/20 via-slate-800/10 to-slate-900/30"></div>
-        <div class="p-4">
-          <h3 class="text-xl font-bold text-white">Диджей сет на СКА Арене</h3>
-          <p class="text-gray-400">Фитмост / зимний ивент</p>
-        </div>
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">лет опыта</div>
       </div>
-
-      <!-- Case 3 -->
-      <div onclick="openModal3()" class="cursor-pointer bg-white/8 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
-        <div class="h-40 w-full bg-gradient-to-br from-slate-700/20 via-slate-800/10 to-slate-900/30"></div>
-        <div class="p-4">
-          <h3 class="text-xl font-bold text-white">Фитмост × Твинби</h3>
-          <p class="text-gray-400">Фитнес-дейтинг / коллаборация</p>
-        </div>
+      <div>
+        <div class="stat-num">700+</div>
+        <div class="stat-label">участников</div>
       </div>
-
-      <!-- Case 4 -->
-      <div onclick="openModal4()" class="cursor-pointer bg-white/8 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
-        <div class="h-40 w-full bg-gradient-to-br from-slate-700/20 via-slate-800/10 to-slate-900/30"></div>
-        <div class="p-4">
-          <h3 class="text-xl font-bold text-white">Фитмост × Кона кафе</h3>
-          <p class="text-gray-400">Бренд-коллаборация</p>
-        </div>
-      </div>
-
-          <!-- Case 5 -->
-      <div onclick="openModal6()" class="cursor-pointer bg-white/8 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
-        <img src="chang-cover.png" class="h-40 w-full object-cover">
-        <div class="p-4">
-          <h3 class="text-xl font-bold text-white">Фитмост × CHANG</h3>
-          <p class="text-gray-400">Бренд-коллаборация</p>
-        </div>
-      </div>
-
-      <!-- Case 6 -->
-      <div onclick="openModal5()" class="cursor-pointer bg-white/8 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
-        <div class="h-40 w-full bg-gradient-to-br from-slate-700/20 via-slate-800/10 to-slate-900/30"></div>
-        <div class="p-4">
-          <h3 class="text-xl font-bold text-white">Премиум-мероприятия</h3>
-          <p class="text-gray-400">Закрытые ивенты / комьюнити</p>
-        </div>
-      </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Modal 1 -->
-  <div id="modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4">
-    <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
-      <h2 class="text-2xl font-bold mb-4 text-white">Фитнес-рейв</h2>
-      <div class="h-56 w-full rounded-xl bg-gradient-to-br from-slate-700/20 via-slate-800/10 to-slate-900/30 mb-6"></div>
-      <p class="mb-3 text-gray-300 whitespace-pre-line"><strong>Задача:</strong>
-Создать масштабное мероприятие Фитмост для привлечения новой аудитории, усиления лояльности текущих пользователей и демонстрации экосистемы приложения через реальный офлайн-опыт.
-
-<strong>Концепция:</strong>
-Фитнес-рейв — мультиформатное wellness-событие, объединившее спорт, активности, комьюнити и бренд-партнерства в одной локации.
-Главная идея — дать гостям возможность за один день попробовать разные направления и сервисы, доступные внутри Фитмост.
-
-<strong>Реализация:</strong>
-В рамках события прошло 5 разных тренировок, все время мероприятия для гостей были доступны различные зоны:
-— мужская-зона (укладка бороды, мужской маникюр, массаж)
-— бьюти-зона для девушек (укладки и макияж)
-— глиттер бар
-— мастер-класс и турнир по шахматам
-— дейтинг для поиска новых знакомств
-— настольный теннис с профессиональным тренером
-— творческие мастер-классы по рисованию и тафтингу
-
-<strong>Такой формат позволил участникам познакомиться с максимальным количеством студий и услуг Фитмост в одном пространстве и создал сильный вирусный эффект вокруг события.</strong>
-
-<strong>Что я делала:</strong>
-— Полностью управляла проектом: от разработки концепции до пост-аналитики
-— Подбирала площадку и координировала подрядчиков
-— Формировала и контролировала бюджет проекта
-— Разрабатывала архитектуру пространства и сценарий движения гостей между зонами
-— Выстраивала партнерские интеграции для усиления пользовательского опыта
-— Курировала тайминг всех активностей и работу команд на площадке
-— Координировала реализацию в день мероприятия и оперативно решала все организационные задачи</p>
     </div>
   </div>
-
-  <!-- Modal 2 -->
-  <div id="modal2" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4">
-    <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
-      <button onclick="closeModal2()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
-      <h2 class="text-2xl font-bold mb-4 text-white">Диджей сет на СКА Арене</h2>
-      <p class="mb-3 text-gray-300 whitespace-pre-line"><strong>Задача:</strong>
-Разработать и реализовать мероприятие от Фитмост, приуроченное к зимнему сезону и Новому году которое привлечёт новую аудиторию и расширит привычное восприятие бренда.
-
-<strong>Концепция:</strong>
-Выйти за рамки привычного фитнес-мероприятия и совместить формат рождественской ярмарки и спорта: каток с живыми диджей-сетами, мастер-классами по фигурному катанию и зимними гастрономическими атрибутами — карамельными яблоками и глинтвейном.
-
-<strong>Что я делала:</strong>
-* Разработала креативную концепцию зимнего мероприятия
-* Полностью вела проект от идеи до реализации
-* Подбирала площадку и полностью координировала подготовку
-* Формировала бюджет и контролировала расходы
-* Разрабатывала тайминг и структуру мероприятия
-* Привлекала партнеров и подрядчиков
-* Координировала команду и работу на площадке
+  <div class="hero-right">
+    <div class="hero-visual"></div>
+    <div class="hero-lines">
+      <svg viewBox="0 0 600 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="150" y1="0" x2="150" y2="800" stroke="#e8b4b8" stroke-width="0.5"/>
+        <line x1="300" y1="0" x2="300" y2="800" stroke="#e8b4b8" stroke-width="0.5"/>
+        <line x1="450" y1="0" x2="450" y2="800" stroke="#e8b4b8" stroke-width="0.5"/>
+        <line x1="0" y1="200" x2="600" y2="200" stroke="#e8b4b8" stroke-width="0.5"/>
+        <line x1="0" y1="400" x2="600" y2="400" stroke="#e8b4b8" stroke-width="0.5"/>
+        <line x1="0" y1="600" x2="600" y2="600" stroke="#e8b4b8" stroke-width="0.5"/>
+        <circle cx="150" cy="200" r="3" fill="#e8b4b8" opacity="0.6"/>
+        <circle cx="300" cy="400" r="3" fill="#e8b4b8" opacity="0.6"/>
+        <circle cx="450" cy="600" r="3" fill="#e8b4b8" opacity="0.6"/>
+        <circle cx="300" cy="200" r="60" stroke="#e8b4b8" stroke-width="0.5" fill="none"/>
+        <circle cx="450" cy="400" r="90" stroke="#e8b4b8" stroke-width="0.5" fill="none"/>
+        <circle cx="150" cy="600" r="40" stroke="#e8b4b8" stroke-width="0.5" fill="none"/>
+        <text x="300" y="420" font-family="serif" font-size="200" fill="#e8b4b8" opacity="0.04" text-anchor="middle" font-style="italic">M</text>
+      </svg>
     </div>
   </div>
+  <div class="scroll-hint">scroll</div>
+</div>
 
-  <!-- Modal 3 -->
-  <div id="modal3" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4">
-    <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
-      <button onclick="closeModal3()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
-      <h2 class="text-2xl font-bold mb-4 text-white">Фитмост × Твинби</h2>
-      <p class="mb-3 text-gray-300 whitespace-pre-line"><strong>Задача:</strong>
-Организовать совместное мероприятие в рамках коллаборации Фитмост х Твинби, которое объединит аудитории двух брендов, усилит узнаваемость партнерства и создаст новый формат знакомств через совместный опыт.
+<section id="cases">
+  <div class="section-label">Кейсы</div>
+  <div class="cases-grid" id="casesGrid"></div>
+</section>
 
-<strong>Концепция:</strong>
-Объединить фитнес и дейтинг в одном событии, чтобы создать комфортную атмосферу для поиска знакомств в новом формате.
-Вместо стандартного сценария знакомств участники взаимодействовали через совместные активности: парные тренировки, лекции про отношения, мастер-класс по лепке из глины, быстрые знакомства и вечеринку.
-
-<strong>Что было реализовано:</strong>
-* Подбирала площадку и полностью координировала подготовку
-* Разработка печатной продукции (анкеты для знакомств, карточки с вопросами)
-* Разрабатывала тайминг и структуру мероприятия
-* Привлекала партнеров и подрядчиков
-* Координировала команду и работу на площадке</p>
+<section id="contact">
+  <div class="contact-inner">
+    <div class="fade-in">
+      <h2 class="contact-title">Давайте<br><em>работать</em><br>вместе</h2>
+      <p class="contact-sub">Готова обсудить ваш проект — от концепции до реализации. Пишите в любое удобное время.</p>
     </div>
-  </div>
-
-  <!-- Modal 4 -->
-  <div id="modal4" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4">
-    <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
-      <button onclick="closeModal4()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
-      <h2 class="text-2xl font-bold mb-4 text-white">Фитмост × Кона кафе</h2>
-      <p class="mb-3 text-gray-300 whitespace-pre-line">Бренд коллаборация для роста узнаваемости бренда, привлечения новой аудитории и усиления вовлеченности действующих пользователей.
-
-В рамках коллаборации были реализованы:
-— спешл-меню с позициями в брендовых цветах Фитмост
-— оффер для новых клиентов через печатные промо-материалы
-— кросс-продвижение в социальных сетях двух брендов
-— мероприятие для блогеров: пилатес в партнерской студии + бранч-дегустация позиций из коллаборации
-
-<strong>Чем я занималась:</strong>
-– Разработала концепцию коллаборации и сценарий взаимодействия брендов
-– Поиск идей и референсов для дизайна печатной продукции
-– Полная организация ивента для инфлюенсеров
-– Разработка пресс-релиза и коммуникационных материалов
-– Координация внутренних и внешних проектных команд
-– Планирование и формирование контент-плана для продвижения коллаборации</p>
-    </div>
-  </div>
-
-  <!-- Modal 5 -->
-  <div id="modal5" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4">
-    <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
-      <button onclick="closeModal5()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
-      <h2 class="text-2xl font-bold mb-4 text-white">Мероприятия для премиум-клиентов</h2>
-
-      <p class="mb-3 text-gray-300 whitespace-pre-line"><strong>Задача:</strong>
-Создать регулярную серию закрытых мероприятий для премиум клиентов приложения, усиливающую ценность подписки и повышающую лояльность пользователей. Формирование закрытого премиум-комьюнити вокруг бренда.
-
-<strong>Концепция:</strong>
-Формат камерных событий, где спорт становился частью эстетичного опыта.
-Среди реализованных форматов:
-— практики в ночных масках
-— утренние тренировки с бизнес-завтраками
-— камерные растяжки при свечах
-— мастер-классы по творчеству
-— классы звукотерапии и гвоздестояния</p>
-
-      <p class="mb-2 text-gray-300"><strong>⚙️ Чем я занималась:</strong></p>
-      <ul class="list-disc pl-5 mb-4 text-gray-400 space-y-1">
-        <li>Организовала 7 мероприятий в разных локациях</li>
-        <li>Придумывала необычные форматы (йога в ночных масках, пилатес и бранч, растяжка при свечах)</li>
-        <li>Вела проекты от идеи до реализации</li>
-        <li>Искала партнеров для подарков</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Modal 6 -->
-  <div id="modal6" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4">
-    <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
-      <button onclick="closeModal6()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
-      <h2 class="text-2xl font-bold mb-4 text-white">Фитмост × CHANG</h2>
-      <img src="chang-cover.png" class="w-full rounded-xl mb-4 object-cover">
-      <div class="grid grid-cols-2 gap-3 mb-6">
-        <img src="chang-1.jpeg" class="rounded-xl object-cover h-48 w-full">
-        <img src="chang-2.jpeg" class="rounded-xl object-cover h-48 w-full">
-      </div>
-      <p class="mb-4 text-gray-300">Комплексная бренд-коллаборация для роста новой аудитории и усиления вовлечённости текущего комьюнити через офлайн-активации и интегрированную коммуникацию.</p>
-      <ul class="list-disc pl-5 mb-4 text-gray-400 space-y-2">
-        <li>Разработала совместно с командой CHANG концепцию коллаборации и сценарии взаимодействия брендов</li>
-        <li>Сформировала сильный оффер для привлечения новых пользователей и роста лояльности аудитории</li>
-        <li>Запустила серию промо-мероприятий в поддержку кампании: утренние пробежки и daytime-party форматы</li>
-        <li>Подобрала визуальные референсы и креативные направления для печатной продукции</li>
-        <li>Поставила и курировала задачи для дизайнеров, SMM- и CRM-команд</li>
-        <li>Синхронизировала работу внутренних и внешних проектных команд</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Results -->
-  <section class="p-10 border-t border-white/10">
-    <h2 class="text-3xl font-semibold mb-8 text-center text-white">Ключевые результаты</h2>
-    <div class="max-w-3xl mx-auto">
-      <ul class="list-disc pl-5 text-gray-300 space-y-2">
-        <li>Более 700+ участников на самом крупном мероприятии</li>
-        <li>Положительные отзывы от участников и партнеров</li>
-        <li>Большое количество отметок и упоминаний в соцсетях, рост узнаваемости бренда</li>
-        <li>Сформирована база проверенных подрядчиков, площадок и партнеров</li>
-        <li>Увеличен процент бартерного сотрудничества</li>
-        <li>Сформировано комьюнити премиум-пользователей</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="p-10 text-center border-t border-white/10">
-    <h2 class="text-2xl font-semibold mb-4 text-white">Контакты</h2>
-    <p class="text-gray-400">Telegram: @vt_margarita</p>
-    <p class="text-gray-400">Телефон: +7 952 931-61-39</p>
-  </section>
-
-  <!-- Script -->
-  <script>
-    function openModal() {document.getElementById('modal').classList.replace('hidden','flex');}
-    function closeModal() {document.getElementById('modal').classList.replace('flex','hidden');}
-    function openModal2() {document.getElementById('modal2').classList.replace('hidden','flex');}
-    function closeModal2() {document.getElementById('modal2').classList.replace('flex','hidden');}
-    function openModal3() {document.getElementById('modal3').classList.replace('hidden','flex');}
-    function closeModal3() {document.getElementById('modal3').classList.replace('flex','hidden');}
-    function openModal4() {document.getElementById('modal4').classList.replace('hidden','flex');}
-    function closeModal4() {document.getElementById('modal4').classList.replace('flex','hidden');}
-    function openModal5() {document.getElementById('modal5').classList.replace('hidden','flex');}
-    function closeModal5() {document.getElementById('modal5').classList.replace('flex','hidden');}
-    function openModal6() {document.getElementById('modal6').classList.replace('hidden','flex');}
-    function closeModal6() {document.getElementById('modal6').classList.replace('flex','hidden');}
-  </script>
-
-</body>
-</html>
+    <div class="contact-links fade-in">
+      <a href="https://t.me/vt_margarita" class="contact-link" target="_blank">
+        <div>
+          <span class="contact-link-label">Telegram</span>
+          <span class="contact-link-value">@vt_margarita</span>
+        </div>
