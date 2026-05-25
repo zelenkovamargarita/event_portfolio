@@ -6,13 +6,15 @@
   <title>Маргарита Зеленкова — Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-black text-gray-200 font-sans">
+<body class="bg-gradient-to-br from-[#16181d] via-[#1b1d24] to-[#22252d] text-gray-200 font-sans min-h-screen">
 
   <!-- Hero -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center p-6">
+  <section class="min-h-screen flex flex-col justify-center items-center text-center p-6 relative overflow-hidden">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(120,119,198,0.08),transparent_35%),radial-gradient(circle_at_80%_30%,rgba(96,165,250,0.06),transparent_35%),radial-gradient(circle_at_50%_80%,rgba(168,85,247,0.05),transparent_35%)] blur-3xl"></div>
+<div class="relative z-10">
     <h1 class="text-5xl font-bold mb-4 text-white">Маргарита Зеленкова</h1>
-    <p class="text-xl mb-6 text-gray-400">Event / Brand Manager</p>
-  </section>
+    <p class="text-xl mb-6 text-gray-300">Event / Brand Manager</p>
+  </div></section>
 
   <!-- About -->
   <section class="p-10 max-w-3xl mx-auto text-center">
@@ -34,17 +36,17 @@
     <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-6">
 
       <!-- Case 1 -->
-      <div onclick="openModal()" class="cursor-pointer bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
-        <div class="h-40 w-full bg-gradient-to-br from-neutral-800 to-neutral-700"></div>
+      <div onclick="openModal()" class="cursor-pointer bg-white/8 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
+        <div class="h-40 w-full bg-gradient-to-br from-slate-700/20 via-slate-800/10 to-slate-900/30"></div>
         <div class="p-4">
-          <h3 class="text-xl font-bold text-white">Синхронизация в К-30</h3>
+          <h3 class="text-xl font-bold text-white">Фитнес-рейв</h3>
           <p class="text-gray-400">Фитмост / комьюнити-ивенты</p>
         </div>
       </div>
 
       <!-- Case 2 -->
-      <div onclick="openModal2()" class="cursor-pointer bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
-        <div class="h-40 w-full bg-gradient-to-br from-neutral-800 to-neutral-700"></div>
+      <div onclick="openModal2()" class="cursor-pointer bg-white/8 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
+        <div class="h-40 w-full bg-gradient-to-br from-slate-700/20 via-slate-800/10 to-slate-900/30"></div>
         <div class="p-4">
           <h3 class="text-xl font-bold text-white">Диджей сет на СКА Арене</h3>
           <p class="text-gray-400">Фитмост / зимний ивент</p>
@@ -52,8 +54,8 @@
       </div>
 
       <!-- Case 3 -->
-      <div onclick="openModal3()" class="cursor-pointer bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
-        <div class="h-40 w-full bg-gradient-to-br from-neutral-800 to-neutral-700"></div>
+      <div onclick="openModal3()" class="cursor-pointer bg-white/8 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
+        <div class="h-40 w-full bg-gradient-to-br from-slate-700/20 via-slate-800/10 to-slate-900/30"></div>
         <div class="p-4">
           <h3 class="text-xl font-bold text-white">Фитмост × Твинби</h3>
           <p class="text-gray-400">Фитнес-дейтинг / коллаборация</p>
@@ -61,20 +63,31 @@
       </div>
 
       <!-- Case 4 -->
-      <div onclick="openModal4()" class="cursor-pointer bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
-        <div class="h-40 w-full bg-gradient-to-br from-neutral-800 to-neutral-700"></div>
+      <div onclick="openModal4()" class="cursor-pointer bg-white/8 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
+        <div class="h-40 w-full bg-gradient-to-br from-slate-700/20 via-slate-800/10 to-slate-900/30"></div>
         <div class="p-4">
           <h3 class="text-xl font-bold text-white">Фитмост × Кона кафе</h3>
-          <p class="text-gray-400">Коллаборация / инфлюенсер-ивент</p>
+          <p class="text-gray-400">Бренд-коллаборация</p>
         </div>
       </div>
 
           <!-- Case 5 -->
-      <div onclick="openModal5()" class="cursor-pointer bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
-        <div class="h-40 w-full bg-gradient-to-br from-neutral-800 to-neutral-700"></div>
+      <div onclick="openModal6()" class="cursor-pointer bg-white/8 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
+        <img src="chang-cover.png" class="h-40 w-full object-cover">
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-white">Фитмост × CHANG</h3>
+          <p class="text-gray-400">Бренд-коллаборация</p>
+        </div>
+      </div>
+
+      <!-- Case 6 -->
+      <div onclick="openModal5()" class="cursor-pointer bg-white/8 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/10 rounded-2xl overflow-hidden hover:bg-white/10 transition">
+        <div class="h-40 w-full bg-gradient-to-br from-slate-700/20 via-slate-800/10 to-slate-900/30"></div>
         <div class="p-4">
           <h3 class="text-xl font-bold text-white">Премиум-мероприятия</h3>
           <p class="text-gray-400">Закрытые ивенты / комьюнити</p>
+        </div>
+      </div>
         </div>
       </div>
 
@@ -85,19 +98,35 @@
   <div id="modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4">
     <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
       <button onclick="closeModal()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
-      <h2 class="text-2xl font-bold mb-4 text-white">Синхронизация в К-30</h2>
-      <div class="h-56 w-full rounded-xl bg-gradient-to-br from-neutral-800 to-neutral-700 mb-6"></div>
-      <p class="mb-3 text-gray-300"><strong>🎯 Задача:</strong><br>Организовать крупные мероприятия от Фитмост для привлечения новых клиентов, повышения лояльности и узнаваемости бренда.</p>
-      <p class="mb-3 text-gray-300"><strong>💡 Концепция:</strong><br>Тренировки под диджей-сеты, современные локации, партнеры с напитками и снеками, подарки и усиленное комьюнити.</p>
-      <p class="mb-2 text-gray-300"><strong>⚙️ Что я делала:</strong></p>
-      <ul class="list-disc pl-5 mb-4 text-gray-400 space-y-1">
-        <li>Полностью вела проект от идеи до реализации</li>
-        <li>Подбирала площадку и подрядчиков</li>
-        <li>Формировала бюджет и контролировала расходы</li>
-        <li>Разрабатывала тайминг и структуру мероприятия</li>
-        <li>Привлекала партнеров</li>
-        <li>Координировала команду и работу на площадке</li>
-      </ul>
+      <h2 class="text-2xl font-bold mb-4 text-white">Фитнес-рейв</h2>
+      <div class="h-56 w-full rounded-xl bg-gradient-to-br from-slate-700/20 via-slate-800/10 to-slate-900/30 mb-6"></div>
+      <p class="mb-3 text-gray-300 whitespace-pre-line"><strong>Задача:</strong>
+Создать масштабное мероприятие Фитмост для привлечения новой аудитории, усиления лояльности текущих пользователей и демонстрации экосистемы приложения через реальный офлайн-опыт.
+
+<strong>Концепция:</strong>
+Фитнес-рейв — мультиформатное wellness-событие, объединившее спорт, активности, комьюнити и бренд-партнерства в одной локации.
+Главная идея — дать гостям возможность за один день попробовать разные направления и сервисы, доступные внутри Фитмост.
+
+<strong>Реализация:</strong>
+В рамках события прошло 5 разных тренировок, все время мероприятия для гостей были доступны различные зоны:
+— мужская-зона (укладка бороды, мужской маникюр, массаж)
+— бьюти-зона для девушек (укладки и макияж)
+— глиттер бар
+— мастер-класс и турнир по шахматам
+— дейтинг для поиска новых знакомств
+— настольный теннис с профессиональным тренером
+— творческие мастер-классы по рисованию и тафтингу
+
+<strong>Такой формат позволил участникам познакомиться с максимальным количеством студий и услуг Фитмост в одном пространстве и создал сильный вирусный эффект вокруг события.</strong>
+
+<strong>Что я делала:</strong>
+— Полностью управляла проектом: от разработки концепции до пост-аналитики
+— Подбирала площадку и координировала подрядчиков
+— Формировала и контролировала бюджет проекта
+— Разрабатывала архитектуру пространства и сценарий движения гостей между зонами
+— Выстраивала партнерские интеграции для усиления пользовательского опыта
+— Курировала тайминг всех активностей и работу команд на площадке
+— Координировала реализацию в день мероприятия и оперативно решала все организационные задачи</p>
     </div>
   </div>
 
@@ -106,17 +135,20 @@
     <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
       <button onclick="closeModal2()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
       <h2 class="text-2xl font-bold mb-4 text-white">Диджей сет на СКА Арене</h2>
-      <p class="mb-3 text-gray-300"><strong>🎯 Задача:</strong><br>Организовать мероприятие от Фитмост приуроченное к зимнему сезону и Новому году.</p>
-      <p class="mb-3 text-gray-300"><strong>💡 Концепция:</strong><br>Рождественская ярмарка + спорт: диджей-сет на катке, мастер-класс по фигурному катанию, яблоки в карамели и глинтвейн. Виральный и нестандартный формат.</p>
-      <p class="mb-2 text-gray-300"><strong>⚙️ Что я делала:</strong></p>
-      <ul class="list-disc pl-5 mb-4 text-gray-400 space-y-1">
-        <li>Полностью вела проект от идеи до реализации</li>
-        <li>Подбирала площадку и подрядчиков</li>
-        <li>Формировала бюджет и контролировала расходы</li>
-        <li>Разрабатывала тайминг и структуру мероприятия</li>
-        <li>Привлекала партнеров</li>
-        <li>Координировала команду и работу на площадке</li>
-      </ul>
+      <p class="mb-3 text-gray-300 whitespace-pre-line"><strong>Задача:</strong>
+Разработать и реализовать мероприятие от Фитмост, приуроченное к зимнему сезону и Новому году которое привлечёт новую аудиторию и расширит привычное восприятие бренда.
+
+<strong>Концепция:</strong>
+Выйти за рамки привычного фитнес-мероприятия и совместить формат рождественской ярмарки и спорта: каток с живыми диджей-сетами, мастер-классами по фигурному катанию и зимними гастрономическими атрибутами — карамельными яблоками и глинтвейном.
+
+<strong>Что я делала:</strong>
+* Разработала креативную концепцию зимнего мероприятия
+* Полностью вела проект от идеи до реализации
+* Подбирала площадку и полностью координировала подготовку
+* Формировала бюджет и контролировала расходы
+* Разрабатывала тайминг и структуру мероприятия
+* Привлекала партнеров и подрядчиков
+* Координировала команду и работу на площадке
     </div>
   </div>
 
@@ -125,16 +157,19 @@
     <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
       <button onclick="closeModal3()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
       <h2 class="text-2xl font-bold mb-4 text-white">Фитмост × Твинби</h2>
-      <p class="mb-3 text-gray-300">Фитнес-дейтинг мероприятие в коллаборации с Твинби</p>
-      <p class="mb-2 text-gray-300"><strong>⚙️ Что было реализовано:</strong></p>
-      <ul class="list-disc pl-5 mb-4 text-gray-400 space-y-1">
-        <li>Разработка анкет для знакомств</li>
-        <li>Брендированные карточки с вопросами</li>
-        <li>Зоны с мастер-классами для пар</li>
-        <li>Парные тренировки (бокс и йога)</li>
-        <li>Бар с напитками</li>
-        <li>Фотозоны</li>
-      </ul>
+      <p class="mb-3 text-gray-300 whitespace-pre-line"><strong>Задача:</strong>
+Организовать совместное мероприятие в рамках коллаборации Фитмост х Твинби, которое объединит аудитории двух брендов, усилит узнаваемость партнерства и создаст новый формат знакомств через совместный опыт.
+
+<strong>Концепция:</strong>
+Объединить фитнес и дейтинг в одном событии, чтобы создать комфортную атмосферу для поиска знакомств в новом формате.
+Вместо стандартного сценария знакомств участники взаимодействовали через совместные активности: парные тренировки, лекции про отношения, мастер-класс по лепке из глины, быстрые знакомства и вечеринку.
+
+<strong>Что было реализовано:</strong>
+* Подбирала площадку и полностью координировала подготовку
+* Разработка печатной продукции (анкеты для знакомств, карточки с вопросами)
+* Разрабатывала тайминг и структуру мероприятия
+* Привлекала партнеров и подрядчиков
+* Координировала команду и работу на площадке</p>
     </div>
   </div>
 
@@ -143,18 +178,21 @@
     <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
       <button onclick="closeModal4()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
       <h2 class="text-2xl font-bold mb-4 text-white">Фитмост × Кона кафе</h2>
-      <p class="text-gray-400 mb-4">Спешл-меню и ивент для инфлюенсеров</p>
+      <p class="mb-3 text-gray-300 whitespace-pre-line">Бренд коллаборация для роста узнаваемости бренда, привлечения новой аудитории и усиления вовлеченности действующих пользователей.
 
-      <p class="mb-3 text-gray-300">Совместно с кафе разработали спешл-меню в брендовых оттенках в рамках коллаборации.</p>
+В рамках коллаборации были реализованы:
+— спешл-меню с позициями в брендовых цветах Фитмост
+— оффер для новых клиентов через печатные промо-материалы
+— кросс-продвижение в социальных сетях двух брендов
+— мероприятие для блогеров: пилатес в партнерской студии + бранч-дегустация позиций из коллаборации
 
-      <p class="mb-2 text-gray-300"><strong>⚙️ Чем я занималась:</strong></p>
-      <ul class="list-disc pl-5 mb-4 text-gray-400 space-y-1">
-        <li>Поиск идей и референсов</li>
-        <li>ТЗ на дизайн меню и карточек с оффером</li>
-        <li>Полная организация ивента для инфлюенсеров (пилатес + бранч)</li>
-        <li>Разработка пресс-релиза</li>
-        <li>Согласование постов и анонсов в соцсетях</li>
-      </ul>
+<strong>Чем я занималась:</strong>
+– Разработала концепцию коллаборации и сценарий взаимодействия брендов
+– Поиск идей и референсов для дизайна печатной продукции
+– Полная организация ивента для инфлюенсеров
+– Разработка пресс-релиза и коммуникационных материалов
+– Координация внутренних и внешних проектных команд
+– Планирование и формирование контент-плана для продвижения коллаборации</p>
     </div>
   </div>
 
@@ -164,8 +202,17 @@
       <button onclick="closeModal5()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
       <h2 class="text-2xl font-bold mb-4 text-white">Мероприятия для премиум-клиентов</h2>
 
-      <p class="mb-3 text-gray-300"><strong>🎯 Задача:</strong><br>
-      Каждый месяц проводить закрытые мероприятия для ультра-пользователей приложения.</p>
+      <p class="mb-3 text-gray-300 whitespace-pre-line"><strong>Задача:</strong>
+Создать регулярную серию закрытых мероприятий для премиум клиентов приложения, усиливающую ценность подписки и повышающую лояльность пользователей. Формирование закрытого премиум-комьюнити вокруг бренда.
+
+<strong>Концепция:</strong>
+Формат камерных событий, где спорт становился частью эстетичного опыта.
+Среди реализованных форматов:
+— практики в ночных масках
+— утренние тренировки с бизнес-завтраками
+— камерные растяжки при свечах
+— мастер-классы по творчеству
+— классы звукотерапии и гвоздестояния</p>
 
       <p class="mb-2 text-gray-300"><strong>⚙️ Чем я занималась:</strong></p>
       <ul class="list-disc pl-5 mb-4 text-gray-400 space-y-1">
@@ -173,6 +220,28 @@
         <li>Придумывала необычные форматы (йога в ночных масках, пилатес и бранч, растяжка при свечах)</li>
         <li>Вела проекты от идеи до реализации</li>
         <li>Искала партнеров для подарков</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal 6 -->
+  <div id="modal6" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4">
+    <div class="bg-neutral-900 rounded-2xl max-w-3xl w-full p-6 relative overflow-y-auto max-h-[90vh]">
+      <button onclick="closeModal6()" class="absolute top-4 right-4 text-xl text-gray-400">✕</button>
+      <h2 class="text-2xl font-bold mb-4 text-white">Фитмост × CHANG</h2>
+      <img src="chang-cover.png" class="w-full rounded-xl mb-4 object-cover">
+      <div class="grid grid-cols-2 gap-3 mb-6">
+        <img src="chang-1.jpeg" class="rounded-xl object-cover h-48 w-full">
+        <img src="chang-2.jpeg" class="rounded-xl object-cover h-48 w-full">
+      </div>
+      <p class="mb-4 text-gray-300">Комплексная бренд-коллаборация для роста новой аудитории и усиления вовлечённости текущего комьюнити через офлайн-активации и интегрированную коммуникацию.</p>
+      <ul class="list-disc pl-5 mb-4 text-gray-400 space-y-2">
+        <li>Разработала совместно с командой CHANG концепцию коллаборации и сценарии взаимодействия брендов</li>
+        <li>Сформировала сильный оффер для привлечения новых пользователей и роста лояльности аудитории</li>
+        <li>Запустила серию промо-мероприятий в поддержку кампании: утренние пробежки и daytime-party форматы</li>
+        <li>Подобрала визуальные референсы и креативные направления для печатной продукции</li>
+        <li>Поставила и курировала задачи для дизайнеров, SMM- и CRM-команд</li>
+        <li>Синхронизировала работу внутренних и внешних проектных команд</li>
       </ul>
     </div>
   </div>
@@ -211,6 +280,8 @@
     function closeModal4() {document.getElementById('modal4').classList.replace('flex','hidden');}
     function openModal5() {document.getElementById('modal5').classList.replace('hidden','flex');}
     function closeModal5() {document.getElementById('modal5').classList.replace('flex','hidden');}
+    function openModal6() {document.getElementById('modal6').classList.replace('hidden','flex');}
+    function closeModal6() {document.getElementById('modal6').classList.replace('flex','hidden');}
   </script>
 
 </body>
