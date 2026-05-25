@@ -13,12 +13,11 @@
     --bg: #0d0c0a;
     --surface: #141310;
     --card: #1a1814;
-    /* Заменили золотой на нежно-розовый */
-    --gold: #e8b4b8; 
-    --gold-light: #f3cbd0;
+    --gold: #c9a96e;
+    --gold-light: #e2c898;
     --cream: #f5efe4;
     --muted: #7a7060;
-    --border: rgba(232, 180, 184, 0.15);
+    --border: rgba(201, 169, 110, 0.15);
     --radius: 2px;
   }
 
@@ -53,7 +52,7 @@
     position: fixed;
     width: 32px;
     height: 32px;
-    border: 1px solid rgba(232,180,184,0.5);
+    border: 1px solid rgba(201,169,110,0.5);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
@@ -64,7 +63,7 @@
     width: 48px;
     height: 48px;
     border-color: var(--gold);
-    background: rgba(232,180,184,0.05);
+    background: rgba(201,169,110,0.05);
   }
 
   /* Grain overlay */
@@ -146,31 +145,13 @@
     height: 1px;
     background: var(--gold);
   }
-  
-  /* Контейнер для фото и имени */
-  .hero-name-container {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    margin-bottom: 32px;
-  }
-  
-  /* Стили для круглого фото */
-  .hero-avatar {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid var(--border);
-    flex-shrink: 0;
-  }
-
   .hero-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(42px, 5vw, 76px);
+    font-size: clamp(52px, 6vw, 88px);
     font-weight: 300;
     line-height: 1.0;
     letter-spacing: -0.01em;
+    margin-bottom: 32px;
   }
   .hero-name em {
     font-style: italic;
@@ -210,8 +191,8 @@
     position: absolute;
     inset: 0;
     background: 
-      radial-gradient(ellipse at 30% 50%, rgba(232,180,184,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 20%, rgba(232,180,184,0.05) 0%, transparent 50%);
+      radial-gradient(ellipse at 30% 50%, rgba(201,169,110,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.05) 0%, transparent 50%);
   }
   .hero-lines {
     position: absolute;
@@ -414,7 +395,7 @@
   .modal-close:hover {
     border-color: var(--gold);
     color: var(--gold);
-    background: rgba(232,180,184,0.05);
+    background: rgba(201,169,110,0.05);
   }
 
   .modal-num {
@@ -505,7 +486,7 @@
     font-size: 12px;
     color: var(--muted);
     letter-spacing: 0.1em;
-    border: 1px dashed rgba(232,180,184,0.2);
+    border: 1px dashed rgba(201,169,110,0.2);
     padding: 16px 24px;
     text-align: center;
     margin-bottom: 12px;
@@ -517,7 +498,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 240px;
     font-weight: 300;
-    color: rgba(232,180,184,0.04);
+    color: rgba(201,169,110,0.04);
     line-height: 1;
     pointer-events: none;
     z-index: 1;
@@ -578,7 +559,7 @@
     transition: transform 0.3s;
   }
   .contact-link:hover::before { transform: scaleY(1); }
-  .contact-link:hover { background: rgba(232,180,184,0.04); }
+  .contact-link:hover { background: rgba(201,169,110,0.04); }
   .contact-link-label {
     font-size: 11px;
     color: var(--muted);
@@ -636,8 +617,6 @@
     .hero { grid-template-columns: 1fr; }
     .hero-right { display: none; }
     .hero-left { padding: 100px 24px 60px; }
-    .hero-name-container { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .hero-avatar { width: 90px; height: 90px; }
     #cases { padding: 80px 24px; }
     .cases-grid { grid-template-columns: 1fr; gap: 2px; }
     .modal { grid-template-columns: 1fr; }
@@ -664,17 +643,13 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
   <div class="hero-left">
     <div class="hero-tag">Event & Brand Manager</div>
-    
-    <div class="hero-name-container">
-      <img src="your-photo.jpg" alt="Маргарита Зеленкова" class="hero-avatar">
-      <h1 class="hero-name">
-        Маргарита<br><em>Зеленкова</em>
-      </h1>
-    </div>
-
+    <h1 class="hero-name">
+      Маргарита<br><em>Зеленкова</em>
+    </h1>
     <p class="hero-desc">
       Работаю с проектами под ключ — от идеи и концепции<br>
       до реализации и анализа результата.
@@ -698,30 +673,32 @@
     <div class="hero-visual"></div>
     <div class="hero-lines">
       <svg viewBox="0 0 600 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="150" y1="0" x2="150" y2="800" stroke="#e8b4b8" stroke-width="0.5"/>
-        <line x1="300" y1="0" x2="300" y2="800" stroke="#e8b4b8" stroke-width="0.5"/>
-        <line x1="450" y1="0" x2="450" y2="800" stroke="#e8b4b8" stroke-width="0.5"/>
-        <line x1="0" y1="200" x2="600" y2="200" stroke="#e8b4b8" stroke-width="0.5"/>
-        <line x1="0" y1="400" x2="600" y2="400" stroke="#e8b4b8" stroke-width="0.5"/>
-        <line x1="0" y1="600" x2="600" y2="600" stroke="#e8b4b8" stroke-width="0.5"/>
-        <circle cx="150" cy="200" r="3" fill="#e8b4b8" opacity="0.6"/>
-        <circle cx="300" cy="400" r="3" fill="#e8b4b8" opacity="0.6"/>
-        <circle cx="450" cy="600" r="3" fill="#e8b4b8" opacity="0.6"/>
-        <circle cx="300" cy="200" r="60" stroke="#e8b4b8" stroke-width="0.5" fill="none"/>
-        <circle cx="450" cy="400" r="90" stroke="#e8b4b8" stroke-width="0.5" fill="none"/>
-        <circle cx="150" cy="600" r="40" stroke="#e8b4b8" stroke-width="0.5" fill="none"/>
-        <text x="300" y="420" font-family="serif" font-size="200" fill="#e8b4b8" opacity="0.04" text-anchor="middle" font-style="italic">M</text>
+        <line x1="150" y1="0" x2="150" y2="800" stroke="#c9a96e" stroke-width="0.5"/>
+        <line x1="300" y1="0" x2="300" y2="800" stroke="#c9a96e" stroke-width="0.5"/>
+        <line x1="450" y1="0" x2="450" y2="800" stroke="#c9a96e" stroke-width="0.5"/>
+        <line x1="0" y1="200" x2="600" y2="200" stroke="#c9a96e" stroke-width="0.5"/>
+        <line x1="0" y1="400" x2="600" y2="400" stroke="#c9a96e" stroke-width="0.5"/>
+        <line x1="0" y1="600" x2="600" y2="600" stroke="#c9a96e" stroke-width="0.5"/>
+        <circle cx="150" cy="200" r="3" fill="#c9a96e" opacity="0.6"/>
+        <circle cx="300" cy="400" r="3" fill="#c9a96e" opacity="0.6"/>
+        <circle cx="450" cy="600" r="3" fill="#c9a96e" opacity="0.6"/>
+        <circle cx="300" cy="200" r="60" stroke="#c9a96e" stroke-width="0.5" fill="none"/>
+        <circle cx="450" cy="400" r="90" stroke="#c9a96e" stroke-width="0.5" fill="none"/>
+        <circle cx="150" cy="600" r="40" stroke="#c9a96e" stroke-width="0.5" fill="none"/>
+        <text x="300" y="420" font-family="serif" font-size="200" fill="#c9a96e" opacity="0.04" text-anchor="middle" font-style="italic">M</text>
       </svg>
     </div>
   </div>
   <div class="scroll-hint">scroll</div>
 </div>
 
+<!-- CASES -->
 <section id="cases">
   <div class="section-label">Кейсы</div>
   <div class="cases-grid" id="casesGrid"></div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
     <div class="fade-in">
@@ -734,3 +711,275 @@
           <span class="contact-link-label">Telegram</span>
           <span class="contact-link-value">@vt_margarita</span>
         </div>
+        <span class="contact-link-icon">→</span>
+      </a>
+      <a href="tel:+79529316139" class="contact-link">
+        <div>
+          <span class="contact-link-label">Телефон</span>
+          <span class="contact-link-value">+7 952 931-61-39</span>
+        </div>
+        <span class="contact-link-icon">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Маргарита Зеленкова</p>
+  <p>Event & Brand Manager</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div id="modalBody"></div>
+    </div>
+    <div class="modal-visual">
+      <div class="modal-visual-bg">
+        <div class="modal-case-number-bg" id="modalCaseNum"></div>
+        <div class="modal-photo-placeholder">
+          <div class="placeholder-art" id="placeholderArt"></div>
+        </div>
+      </div>
+      <div class="photo-upload-hint">
+        <div class="photo-upload-text">📷 Здесь будут фото с мероприятия</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const cases = [
+  {
+    id: '01',
+    title: 'Фитнес-рейв',
+    excerpt: 'Масштабное wellness-событие — спорт, активности и бренд-партнерства в одном пространстве.',
+    tags: ['Мероприятие', 'Фитмост', '700+ гостей'],
+    task: 'Создать масштабное мероприятие Фитмост для привлечения новой аудитории, усиления лояльности текущих пользователей и демонстрации экосистемы приложения через реальный офлайн-опыт.',
+    concept: 'Фитнес-рейв — мультиформатное wellness-событие, объединившее спорт, активности, комьюнити и бренд-партнерства в одной локации. Главная идея — дать гостям возможность за один день попробовать разные направления и сервисы, доступные внутри Фитмост.',
+    implementation: [
+      '5 тренировок разных форматов',
+      'Мужская зона (укладка бороды, маникюр, массаж)',
+      'Бьюти-зона (укладки и макияж)',
+      'Глиттер-бар',
+      'Мастер-класс и турнир по шахматам',
+      'Дейтинг для поиска новых знакомств',
+      'Настольный теннис с профессиональным тренером',
+      'Творческие мастер-классы по рисованию и тафтингу',
+    ],
+    role: [
+      'Полное управление проектом: от концепции до пост-аналитики',
+      'Подбор площадки и координация подрядчиков',
+      'Формирование и контроль бюджета',
+      'Разработка архитектуры пространства и сценария движения гостей',
+      'Выстраивание партнерских интеграций',
+      'Курирование тайминга и координация в день мероприятия',
+    ],
+    gradient: 'radial-gradient(ellipse at 30% 40%, rgba(201,169,110,0.12) 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(120,80,40,0.08) 0%, transparent 50%)',
+  },
+  {
+    id: '02',
+    title: 'Диджей-сет на СКА Арене',
+    excerpt: 'Зимнее событие: каток с живыми диджей-сетами, фигурное катание и рождественская атмосфера.',
+    tags: ['Зимнее событие', 'Фитмост', 'СКА Арена'],
+    task: 'Разработать и реализовать мероприятие от Фитмост, приуроченное к зимнему сезону и Новому году, которое привлечёт новую аудиторию и расширит привычное восприятие бренда.',
+    concept: 'Выйти за рамки привычного фитнес-мероприятия и совместить формат рождественской ярмарки и спорта: каток с живыми диджей-сетами, мастер-классами по фигурному катанию и зимними гастрономическими атрибутами — карамельными яблоками и глинтвейном.',
+    implementation: null,
+    role: [
+      'Разработала креативную концепцию зимнего мероприятия',
+      'Полностью вела проект от идеи до реализации',
+      'Подбирала площадку и координировала подготовку',
+      'Формировала бюджет и контролировала расходы',
+      'Разрабатывала тайминг и структуру мероприятия',
+      'Привлекала партнеров и подрядчиков',
+      'Координировала команду и работу на площадке',
+    ],
+    gradient: 'radial-gradient(ellipse at 60% 30%, rgba(150,200,255,0.06) 0%, transparent 60%), radial-gradient(ellipse at 30% 70%, rgba(201,169,110,0.08) 0%, transparent 50%)',
+  },
+  {
+    id: '03',
+    title: 'Фитмост × Твинби',
+    excerpt: 'Коллаборация двух брендов: фитнес и дейтинг в одном событии — новый формат знакомств.',
+    tags: ['Коллаборация', 'Дейтинг', 'Фитмост'],
+    task: 'Организовать совместное мероприятие в рамках коллаборации Фитмост × Твинби, которое объединит аудитории двух брендов, усилит узнаваемость партнерства и создаст новый формат знакомств через совместный опыт.',
+    concept: 'Объединить фитнес и дейтинг в одном событии, чтобы создать комфортную атмосферу для знакомств. Вместо стандартного сценария — совместные активности: парные тренировки, лекции про отношения, мастер-класс по лепке из глины, быстрые знакомства и вечеринка.',
+    implementation: null,
+    role: [
+      'Подбор площадки и координация подготовки',
+      'Разработка печатной продукции (анкеты, карточки вопросов)',
+      'Создание структуры и тайминга мероприятия',
+      'Привлечение подрядчиков и партнеров',
+      'Координация команды на площадке',
+    ],
+    gradient: 'radial-gradient(ellipse at 50% 50%, rgba(201,100,150,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.08) 0%, transparent 50%)',
+  },
+  {
+    id: '04',
+    title: 'Фитмост × Кона кафе',
+    excerpt: 'Бренд-коллаборация: спешл-меню, инфлюенсер-ивент и кросс-продвижение в соцсетях.',
+    tags: ['Бренд', 'Коллаборация', 'Инфлюенсеры'],
+    task: 'Бренд-коллаборация для роста узнаваемости, привлечения новой аудитории и усиления вовлеченности действующих пользователей.',
+    concept: 'Спешл-меню с позициями в брендовых цветах Фитмост, оффер для новых клиентов, кросс-продвижение в соцсетях и мероприятие для блогеров: пилатес в партнерской студии + бранч-дегустация.',
+    implementation: [
+      'Спешл-меню с позициями в брендовых цветах Фитмост',
+      'Оффер для новых клиентов через печатные промо-материалы',
+      'Кросс-продвижение в соцсетях двух брендов',
+      'Инфлюенсер-ивент: пилатес + бранч-дегустация',
+    ],
+    role: [
+      'Разработка концепции коллаборации',
+      'Поиск идей и референсов',
+      'Организация инфлюенсер-ивента',
+      'Подготовка пресс-релиза и коммуникационных материалов',
+      'Координация проектных команд и контент-продвижения',
+    ],
+    gradient: 'radial-gradient(ellipse at 40% 60%, rgba(100,180,120,0.06) 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, rgba(201,169,110,0.08) 0%, transparent 50%)',
+  },
+  {
+    id: '05',
+    title: 'Фитмост × CHANG',
+    excerpt: 'Комплексная бренд-коллаборация: утренние пробежки, daytime-party и интегрированная коммуникация.',
+    tags: ['Бренд-коллаборация', 'Активации', 'Комьюнити'],
+    task: 'Комплексная бренд-коллаборация для роста новой аудитории и усиления вовлечённости текущего комьюнити через офлайн-активации и интегрированную коммуникацию.',
+    concept: 'Утренние пробежки и daytime-party совместно с командой CHANG. Сильный оффер для новых пользователей, синхронизация внутренних и внешних команд, визуальное единство бренд-материалов.',
+    implementation: null,
+    role: [
+      'Совместная разработка концепции с командой CHANG',
+      'Подготовка оффера для новых пользователей',
+      'Реализация промо-мероприятий: утренние пробежки и daytime-party',
+      'Подбор визуальных референсов для печатной продукции',
+      'Постановка задач дизайнерам, SMM и CRM-командам',
+      'Синхронизация внутренних и внешних команд',
+    ],
+    gradient: 'radial-gradient(ellipse at 60% 60%, rgba(201,169,110,0.1) 0%, transparent 60%), radial-gradient(ellipse at 20% 30%, rgba(80,120,200,0.06) 0%, transparent 50%)',
+  },
+  {
+    id: '06',
+    title: 'Мероприятия для премиум-клиентов',
+    excerpt: 'Серия закрытых камерных событий для VIP-аудитории: свечи, звукотерапия, утренние завтраки.',
+    tags: ['Premium', 'Комьюнити', '7 мероприятий'],
+    task: 'Создать регулярную серию закрытых мероприятий для премиум-клиентов приложения, усиливающую ценность подписки и повышающую лояльность. Формирование закрытого премиум-комьюнити вокруг бренда.',
+    concept: 'Формат камерных событий, где спорт становился частью эстетичного опыта. Эксклюзивная атмосфера для избранной аудитории с акцентом на уникальные и нестандартные форматы.',
+    implementation: [
+      'Практики в ночных масках',
+      'Утренние тренировки с бизнес-завтраками',
+      'Камерные растяжки при свечах',
+      'Мастер-классы по творчеству',
+      'Классы звукотерапии и гвоздестояния',
+    ],
+    role: [
+      '7 мероприятий в разных локациях',
+      'Разработка нестандартных форматов',
+      'Ведение проектов от идеи до реализации',
+      'Поиск партнеров для подарков',
+    ],
+    gradient: 'radial-gradient(ellipse at 50% 50%, rgba(201,169,110,0.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(150,100,200,0.06) 0%, transparent 50%)',
+  },
+];
+
+// Render cards
+const grid = document.getElementById('casesGrid');
+cases.forEach((c, i) => {
+  const card = document.createElement('div');
+  card.className = 'case-card fade-in';
+  card.style.transitionDelay = `${i * 0.08}s`;
+  card.innerHTML = `
+    <div class="case-bg" style="background: ${c.gradient}"></div>
+    <div class="case-num">${c.id}</div>
+    <div class="case-title">${c.title}</div>
+    <div class="case-excerpt">${c.excerpt}</div>
+    <div class="case-tags">${c.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+    <div class="case-arrow">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Открыть кейс
+    </div>
+  `;
+  card.addEventListener('click', () => openModal(c));
+  grid.appendChild(card);
+});
+
+// Modal
+const overlay = document.getElementById('modalOverlay');
+const modalBody = document.getElementById('modalBody');
+const modalCaseNum = document.getElementById('modalCaseNum');
+
+function openModal(c) {
+  modalCaseNum.textContent = c.id;
+
+  let html = `
+    <div class="modal-num">Кейс ${c.id}</div>
+    <h2 class="modal-title">${c.title}</h2>
+    <div class="modal-section-title">Задача</div>
+    <p class="modal-text">${c.task}</p>
+    <div class="modal-section-title">Концепция</div>
+    <p class="modal-text">${c.concept}</p>
+  `;
+
+  if (c.implementation) {
+    html += `
+      <div class="modal-section-title">Реализация</div>
+      <ul class="modal-list">${c.implementation.map(i => `<li>${i}</li>`).join('')}</ul>
+    `;
+  }
+
+  html += `
+    <div class="modal-section-title">Моя роль</div>
+    <ul class="modal-list">${c.role.map(r => `<li>${r}</li>`).join('')}</ul>
+  `;
+
+  modalBody.innerHTML = html;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+overlay.addEventListener('click', e => {
+  if (e.target === overlay) closeModal();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+function closeModal() {
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top = mouseY + 'px';
+});
+
+function animateRing() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  ring.style.left = ringX + 'px';
+  ring.style.top = ringY + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .case-card').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+  el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
