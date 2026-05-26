@@ -398,9 +398,26 @@
     .photo-circle { width: 220px; height: 220px; }
     #cases { padding: 80px 24px; }
     .cases-grid { grid-template-columns: 1fr; gap: 2px; }
-    .modal { grid-template-columns: 1fr; }
-    .modal-visual { display: none; }
-    .modal-content { padding: 48px 24px; }
+
+    /* Modal: stack content on top, gallery below */
+    .modal {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      overflow-y: auto;
+    }
+    .modal-content { padding: 48px 24px 32px; overflow-y: visible; }
+    .modal-visual {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+    }
+    .modal-gallery {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 180px 180px;
+      flex: none;
+    }
+    .gallery-hint { padding: 12px 16px; }
+
     #contact { padding: 80px 24px; }
     .contact-inner { grid-template-columns: 1fr; gap: 40px; }
     footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
