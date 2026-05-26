@@ -391,36 +391,96 @@
   .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+  /* ─── МОБИЛЬНАЯ ВЕРСИЯ ──────────────────────────────────────────── */
   @media (max-width: 900px) {
     nav { padding: 20px 24px; }
-    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 40px; }
-    .photo-wrapper { width: 220px; height: 220px; }
-    .photo-circle { width: 220px; height: 220px; }
+
+    /* Hero: одна колонка, фото сверху */
+    .hero {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      padding: 100px 24px 60px;
+      gap: 32px;
+      min-height: auto;
+    }
+
+    /* Фото идёт первым визуально */
+    .hero-right {
+      order: -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Фиксируем размер обёртки и круга на мобиле */
+    .photo-wrapper {
+      width: 200px;
+      height: 200px;
+    }
+    .photo-circle {
+      width: 200px;
+      height: 200px;
+    }
+
+    /* Убираем вращающееся кольцо чтобы не выходило за экран */
+    .photo-ring-outer {
+      inset: -16px;
+    }
+
+    .scroll-hint { display: none; }
+
+    /* Кейсы */
     #cases { padding: 80px 24px; }
     .cases-grid { grid-template-columns: 1fr; gap: 2px; }
+    .case-arrow { opacity: 1; transform: translate(0, 0); }
 
-    /* Modal: stack content on top, gallery below */
+    /* Модальное окно — стек: текст + галерея под ним */
     .modal {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto;
       overflow-y: auto;
     }
-    .modal-content { padding: 48px 24px 32px; overflow-y: visible; }
+    .modal-content {
+      padding: 60px 20px 32px;
+      overflow-y: visible;
+    }
+    .modal-close {
+      top: 16px;
+      right: 16px;
+      cursor: pointer;
+    }
+
+    /* Галерея: 2 столбца, квадратные ячейки через aspect-ratio */
     .modal-visual {
       display: flex;
       flex-direction: column;
       height: auto;
     }
     .modal-gallery {
+      display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: 180px 180px;
+      grid-template-rows: none; /* убираем фиксированную высоту */
+      gap: 2px;
       flex: none;
+    }
+    .gallery-slot {
+      aspect-ratio: 1 / 1; /* квадратные ячейки — фото всегда видны */
+      min-height: 0;
+    }
+    .gallery-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .gallery-hint { padding: 12px 16px; }
 
+    /* Контакты */
     #contact { padding: 80px 24px; }
     .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    .contact-link { cursor: pointer; }
+
     footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+
     body { cursor: auto; }
     .cursor, .cursor-ring { display: none; }
   }
@@ -526,13 +586,8 @@
 
 <script>
 // ─── ФОТО ───────────────────────────────────────────────────────────────────
-// Главное фото (круглое на главной странице)
-// Назовите файл: foto_hero.jpg  и положите рядом с portfolio.html
 const HERO_PHOTO = 'foto_hero.jpg';
 
-// Фото для каждого кейса — по 4 штуки
-// Назовите файлы: case01_1.jpg, case01_2.jpg ... case06_4.jpg
-// и положите рядом с portfolio.html
 const CASE_PHOTOS = {
   '01': ['case01_1.jpg', 'case01_2.jpg', 'case01_3.jpg', 'case01_4.jpg'],
   '02': ['case02_1.jpg', 'case02_2.jpg', 'case02_3.jpg', 'case02_4.jpg'],
@@ -543,7 +598,6 @@ const CASE_PHOTOS = {
 };
 // ─────────────────────────────────────────────────────────────────────────────
 
-// Загружаем главное фото — если файла нет, покажем заглушку
 (function loadHeroPhoto() {
   const circle = document.getElementById('heroPhotoCircle');
   const img = new Image();
@@ -632,7 +686,6 @@ const cases = [
   },
 ];
 
-// Render cards
 const grid = document.getElementById('casesGrid');
 cases.forEach((c, i) => {
   const card = document.createElement('div');
@@ -653,7 +706,6 @@ cases.forEach((c, i) => {
   grid.appendChild(card);
 });
 
-// Modal
 function renderGallery(caseId) {
   const gallery = document.getElementById('modalGallery');
   const photos = CASE_PHOTOS[caseId] || [];
@@ -663,23 +715,6 @@ function renderGallery(caseId) {
     const slot = document.createElement('div');
     slot.className = 'gallery-slot';
 
-    const img = new Image();
-    img.onload = () => {
-      slot.innerHTML = '';
-      slot.appendChild(img);
-    };
-    img.onerror = () => {
-      slot.innerHTML = `
-        <div class="gallery-slot-placeholder">
-          <span class="slot-num">0${i+1}</span>
-          <p>${src}</p>
-        </div>`;
-    };
-    img.src = src;
-    img.alt = `Фото ${i+1}`;
-    img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;';
-
-    // show placeholder immediately while loading
     slot.innerHTML = `
       <div class="gallery-slot-placeholder">
         <span class="slot-num">0${i+1}</span>
@@ -688,19 +723,18 @@ function renderGallery(caseId) {
 
     gallery.appendChild(slot);
 
-    // retry after placeholder is in DOM
-    const img2 = new Image();
-    img2.onload = () => {
+    const img = new Image();
+    img.onload = () => {
       slot.innerHTML = '';
-      img2.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;';
-      slot.appendChild(img2);
-      slot.addEventListener('mouseenter', () => img2.style.transform = 'scale(1.04)');
-      slot.addEventListener('mouseleave', () => img2.style.transform = '');
+      img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;';
+      slot.appendChild(img);
+      slot.addEventListener('mouseenter', () => img.style.transform = 'scale(1.04)');
+      slot.addEventListener('mouseleave', () => img.style.transform = '');
     };
-    img2.src = src;
+    img.src = src;
+    img.alt = `Фото ${i+1}`;
   });
 
-  // hint text
   document.getElementById('galleryHintText').innerHTML =
     `Файлы для этого кейса: <code>case${caseId}_1.jpg</code> — <code>case${caseId}_4.jpg</code>`;
 }
@@ -738,7 +772,7 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-// Cursor
+// Cursor (desktop only)
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
 let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
